@@ -55,6 +55,10 @@ nullOp.innerHTML +=`
     Sua idade é: ${idade ?? "nao Informado"}
   </div>
 `;
+
+nullOp.innerHTML +=`
+  <button onclick="location.href='#header'">Voltar</button>
+`;
 }
 
 //Objetos
@@ -145,7 +149,9 @@ Obj.innerHTML +=`
   </div>
 `;
 
-
+Obj.innerHTML +=`
+<button onclick="location.href='#header'">Voltar</button>
+`;
 }
 
 //Desestruturação
@@ -228,7 +234,10 @@ Obj.innerHTML +=`
     idade: ${mostraIdade(user)}
   </div>
   `;
-
+  
+  destruct.innerHTML +=`
+  <button onclick="location.href='#header'">Voltar</button>
+`;
 }
 
 //REST OPERATOR
@@ -238,25 +247,17 @@ Obj.innerHTML +=`
   <p>como podemos ver a serguir o retorno de rest nos entrega todo o objeto user menos o nome e idade</p>
   <div class="script">
   const { name, idade, ...rest } = user;<br>
-    `+'address: ${JSON.stringify(rest)};'+`
+    `+'result: ${JSON.stringify(rest)};'+`
   </div>
   <p>Resultado:</p>
   <div class="result">
-    address: ${JSON.stringify(rest)}
+    result: ${JSON.stringify(rest)}
   </div>
   `;
 
   restOp.innerHTML +=`
-  <p>Rest operators também funcionam com arrays</p>
-  <div class="script">
-  const { name, idade, ...rest } = user;<br>
-    `+'address: ${JSON.stringify(rest)};'+`
-  </div>
-  <p>Resultado:</p>
-  <div class="result">
-    address: ${JSON.stringify(rest)}
-  </div>
-  `;
+  <button onclick="location.href='#header'">Voltar</button>
+`;
 
 }
 

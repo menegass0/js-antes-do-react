@@ -21,10 +21,12 @@ header h1{
   margin-bottom: 30px;
 }
 .wrapper{
+  position: relative;
   max-width: 600px;
   width: 100%;
   background: #fff;
   padding: 30px;
+  padding-bottom: 50px;
   border-radius: 10px;
   margin-bottom: 30px;
 }
@@ -40,12 +42,15 @@ header h1{
   font-weight: 500;
 }
 .wrapper button{
+  cursor: pointer;
   padding: 10px 20px;
   border: none;
   background: #9f5fdc;
   color: #fff;
   font-size: 18px;
   font-weight: 500;
+  margin-top: 5px;
+  border-radius: 5px;
 }
 .wrapper .script, .wrapper .result{
   padding: 15px;
@@ -58,6 +63,12 @@ header h1{
 .wrapper .result{
   background: #cb99fa;
   margin-bottom: 40px;
+}
+
+.op button{
+  position: absolute;
+  right: 30px;
+  bottom: 20px;
 }
 
 
