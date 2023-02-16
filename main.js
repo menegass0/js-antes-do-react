@@ -1,4 +1,5 @@
 const destruct = document.querySelector(".destructuring");
+const restOp = document.querySelector(".rest-operators");
 
 const tab= "__";
 
@@ -225,6 +226,35 @@ Obj.innerHTML +=`
   <p>Resultado:</p>
   <div class="result">
     idade: ${mostraIdade(user)}
+  </div>
+  `;
+
+}
+
+//REST OPERATOR
+{
+  const { name, idade, ...rest } = user;
+  restOp.innerHTML +=`
+  <p>como podemos ver a serguir o retorno de rest nos entrega todo o objeto user menos o nome e idade</p>
+  <div class="script">
+  const { name, idade, ...rest } = user;<br>
+    `+'address: ${JSON.stringify(rest)};'+`
+  </div>
+  <p>Resultado:</p>
+  <div class="result">
+    address: ${JSON.stringify(rest)}
+  </div>
+  `;
+
+  restOp.innerHTML +=`
+  <p>Rest operators também funcionam com arrays</p>
+  <div class="script">
+  const { name, idade, ...rest } = user;<br>
+    `+'address: ${JSON.stringify(rest)};'+`
+  </div>
+  <p>Resultado:</p>
+  <div class="result">
+    address: ${JSON.stringify(rest)}
   </div>
   `;
 
