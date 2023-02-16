@@ -257,7 +257,63 @@ Obj.innerHTML +=`
 
   restOp.innerHTML +=`
   <button onclick="location.href='#header'">Voltar</button>
-`;
+  `;
+}
+
+//Short syntax
+
+{
+  const name = "jaozin";
+  const idade = 15;
+
+  const jaozin = {
+    name,
+    idade,
+  }
+  
+  shorSyn.innerHTML +=`
+  <p>na hora de construir um objeto nos podemos usar variaveis para inserir como um value da key</p>
+  <div class="script">
+  const name = "jaozin";<br>
+  const idade = 15;<br><br>
+  const jaozin = {<br>
+  ${tab}name: name,<br>
+  ${tab}idade: idade,<br>
+  }<br><br>
+  `+'result: ${JSON.stringify(jaozin)};'+`
+  </div>
+  <p>Resultado:</p>
+  <div class="result">
+    result: ${JSON.stringify(jaozin)}
+  </div>
+  `;
+
+  shorSyn.innerHTML +=`
+  <p>pode-se obter o mesmo resultado colocando a variavel comom a propria key, assim ela associa o nome da variavel ao nome da key e o conteúdo da variavel ao counteudo da value</p>
+  <div class="script">
+  const name = "jaozin";<br>
+  const idade = 15;<br><br>
+  const jaozin = {<br>
+  ${tab}name,<br>
+  ${tab}idade,<br>
+  }<br><br>
+  `+'result: ${JSON.stringify(jaozin)};'+`
+  </div>
+  <p>Resultado:</p>
+  <div class="result">
+    result: ${JSON.stringify(jaozin)}
+  </div>
+  `;
+  
+
+  shorSyn.innerHTML +=`
+  <button onclick="location.href='#header'">Voltar</button>
+  `;
+}
+
+
+//chaining Optional
+{
 
 }
 
