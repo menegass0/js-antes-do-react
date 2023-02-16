@@ -106,6 +106,45 @@ Obj.innerHTML +=`
   </div>
 `;
 
+Obj.innerHTML +=`
+  <h2>Função Object.values(obj)</h2>
+  <p>a funçao retorna todas as valores de um tipo objeto</p>
+  <div class="script">
+    `+"Object.values(user)"+`<br>
+  </div>
+  <p>Resultado:</p>
+  <div class="result">
+    ${Object.values(user)}
+  </div>
+`;
+
+Obj.innerHTML +=`
+  <p>a javascript nao entende como printar um tipo objeto dentro do objeto, um jeito de resolver isso é usando JSON</p>
+  <div class="script">
+    `+"JSON.stringify(Object.values(user))"+`<br>
+  </div>
+  <p>Resultado:</p>
+  <div class="result">
+    ${JSON.stringify(Object.values(user))}
+  </div>
+`;
+
+Obj.innerHTML +=`
+  <h2>Função Object.entries(obj)</h2>
+  <p>cria varios vetores contendo em cada vetor a key e o value de cada atributo</p>
+  <div class="script">
+    `+"JSON.stringify(Object.entries(user))"+`<br>
+  </div>
+  <p>Resultado:</p>
+  <div class="result">
+    ${JSON.stringify(Object.entries(user))}
+  </div>
+`;
+
+
+
+
+
 
 
 
