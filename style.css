@@ -8,19 +8,27 @@ body{
   display: flex;
   min-height: 100vh;
   background: #9f5fdc;
+  padding: 40px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  overflow-y: auto;
+}
+body::-webkit-scrollbar{
+  width: 0;
+}
+header h1{
+  margin-bottom: 30px;
 }
 .wrapper{
-  width: 600px;
+  max-width: 600px;
+  width: 100%;
   background: #fff;
   padding: 30px;
   border-radius: 10px;
   margin-bottom: 30px;
 }
 .wrapper h1{
-  margin-bottom: 0px;
   color: #9f5fdc;
 }
 .wrapper h2{
@@ -28,6 +36,14 @@ body{
 }
 .wrapper p{
   margin-bottom: 5px;
+  font-size: 18px;
+  font-weight: 500;
+}
+.wrapper button{
+  padding: 10px 20px;
+  border: none;
+  background: #9f5fdc;
+  color: #fff;
   font-size: 18px;
   font-weight: 500;
 }
