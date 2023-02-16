@@ -1,8 +1,19 @@
-// Nullish coalescing Operator;
-const nullOp = document.querySelector(".null-operator");
-const tab= "__";
-// operador para lidar com valores nulos
+const destruct = document.querySelector(".destructuring");
 
+const tab= "__";
+
+const user ={
+  name:'Diego',
+  idade: 27,
+  address: {
+    street: "rua teste", 
+    Number: 176,
+  },
+};
+// Nullish coalescing Operator;
+{
+const nullOp = document.querySelector(".null-operator");
+// operador para lidar com valores nulos
 let idade = null;
 
 //podemos usar o operador ou(||) mas o problema é que ele considera valores como 0 nao validos também
@@ -43,20 +54,12 @@ nullOp.innerHTML +=`
     Sua idade é: ${idade ?? "nao Informado"}
   </div>
 `;
+}
 
 //Objetos
 
+{
 const Obj = document.querySelector(".objects")
-
-const user ={
-  name:'Diego',
-  idade: 27,
-  address: {
-    street: "rua teste", 
-    Number: 176,
-  },
-};
-
 
 Obj.innerHTML += `
 <p>Objeto inicial:</p>
@@ -77,7 +80,7 @@ Obj.innerHTML +=`
   <h2>expressão in</h2>
   <p>a expressao in retorna true ou false caso haja o campo dentro do objeto</p>
   <div class="script">
-    `+"'name' in user"+`<br>
+    'name' in user<br>
   </div>
   <p>Resultado:</p>
   <div class="result">
@@ -86,7 +89,7 @@ Obj.innerHTML +=`
 `;
 Obj.innerHTML +=`
   <div class="script">
-    `+"'nickname' in user"+`<br>
+    nickname' in user<br>
   </div>
   <p>Resultado:</p>
   <div class="result">
@@ -98,7 +101,7 @@ Obj.innerHTML +=`
   <h2>Função Object.keys(obj)</h2>
   <p>a funçao retorna todas as keys de um tipo objeto</p>
   <div class="script">
-    `+"Object.keys(user)"+`<br>
+    Object.keys(user)<br>
   </div>
   <p>Resultado:</p>
   <div class="result">
@@ -110,7 +113,7 @@ Obj.innerHTML +=`
   <h2>Função Object.values(obj)</h2>
   <p>a funçao retorna todas as valores de um tipo objeto</p>
   <div class="script">
-    `+"Object.values(user)"+`<br>
+    Object.values(user)<br>
   </div>
   <p>Resultado:</p>
   <div class="result">
@@ -121,7 +124,7 @@ Obj.innerHTML +=`
 Obj.innerHTML +=`
   <p>a javascript nao entende como printar um tipo objeto dentro do objeto, um jeito de resolver isso é usando JSON</p>
   <div class="script">
-    `+"JSON.stringify(Object.values(user))"+`<br>
+    JSON.stringify(Object.values(user))<br>
   </div>
   <p>Resultado:</p>
   <div class="result">
@@ -133,13 +136,100 @@ Obj.innerHTML +=`
   <h2>Função Object.entries(obj)</h2>
   <p>cria varios vetores contendo em cada vetor a key e o value de cada atributo</p>
   <div class="script">
-    `+"JSON.stringify(Object.entries(user))"+`<br>
+    JSON.stringify(Object.entries(user))<br>
   </div>
   <p>Resultado:</p>
   <div class="result">
     ${JSON.stringify(Object.entries(user))}
   </div>
 `;
+
+
+}
+
+//Desestruturação
+
+{
+
+  let address1 = user.address;
+  destruct.innerHTML +=`
+  <p>o modo convencional consiste em criar uma variavel e atribur o campo do objeto a ela</p>
+  <div class="script">
+    const address = user.address<br>
+    `+'address: ${JSON.stringify(address)}'+`
+  </div>
+  <p>Resultado:</p>
+  <div class="result">
+    address: ${JSON.stringify(address1)}
+  </div>
+  `;
+
+  let {address, idade} = user;
+  destruct.innerHTML +=`
+  <p>o metodo de destruct faz a mesma operação dessa maneira:</p>
+  <div class="script">
+    const {address} = user<br>
+    `+'address: ${JSON.stringify(address)}'+`
+  </div>
+  <p>Resultado:</p>
+  <div class="result">
+    address: ${JSON.stringify(address)}
+  </div>
+  `;
+
+  destruct.innerHTML +=`
+  <p>podendo ate mesmo declarar outros campos na mesma linha</p>
+  <div class="script">
+    const {address, idade} = user<br>
+    `+'campos: ${JSON.stringify(address, idade)}'+`
+  </div>
+  <p>Resultado:</p>
+  <div class="result">
+    campos: ${JSON.stringify({address, idade})}<br>
+  </div>
+  `;
+
+}
+
+//Desestruturação 2
+//criando outra area de desestruturação para poder usar a mudança de nome na variavel
+{
+  const {address, idade:age} = user;
+  destruct.innerHTML +=`
+  <p>você também pode mudar o nome da variavel na instanciação</p>
+  <div class="script">
+    const {address, idade: age} = user<br>
+    `+'address: ${JSON.stringify({address, age})}'+`
+  </div>
+  <p>Resultado:</p>
+  <div class="result">
+    campos: ${JSON.stringify({address, age})}
+  </div>
+  `;
+
+  function mostraIdade({ idade }){
+    return idade;
+  }
+  destruct.innerHTML +=`
+  <h2>Funçoes com desestruturação</h2>
+  <p>desestruturações podem ser usadas em funcçoes também</p>
+  <div class="script">
+    function mostraIdade({ idade }){<br>
+    ${tab}return idade;<br>
+    }
+  </div>
+  <p>Nesse caso, o usuario passa o objeto como parametro mas só é pego o  campo idade</p>
+  <div class="script">
+    idade: `+'mostraIdade(user)'+`
+  </div>
+  <p>Resultado:</p>
+  <div class="result">
+    idade: ${mostraIdade(user)}
+  </div>
+  `;
+
+}
+
 
 
 
