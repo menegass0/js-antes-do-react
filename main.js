@@ -1,5 +1,8 @@
-const destruct = document.querySelector(".destructuring");
-const restOp = document.querySelector(".rest-operators");
+const destruct = document.querySelector(".destructuring"),
+restOp = document.querySelector(".rest-operators"),
+chainOpt = document.querySelector(".chain-opt"),
+shorSyn = document.querySelector(".short-syntax");
+
 
 const tab= "__";
 
@@ -314,6 +317,146 @@ Obj.innerHTML +=`
 
 //chaining Optional
 {
+  const jaozin ={
+    name:'Diego',
+    idade: 27,
+    address: {
+      street: "rua teste", 
+      Number: 176,
+      zip:{
+        zipcode: 11750,
+        city: 'casa da mae joana',
+      },
+      showFullAddress(){
+        return "ok";
+      },
+    },
+  };
+  const faltando ={
+    name:'Diego',
+    idade: 27,
+  }
+
+  chainOpt.innerHTML += `
+    <p>suponha que você tenha o seginte objeto:</p>
+    <div class="script">
+      const user ={<br>
+      ${tab}name: 'Diego',<br>
+      ${tab}idade: 27,<br>
+      ${tab}address: {<br>
+      ${tab}${tab}street: "rua teste",<br>
+      ${tab}${tab}Number: 176,<br>
+      ${tab}},<br>
+      };
+    </div>
+    <p>ao tentar retornar o valor de street em address voce faz o seguinte comando:</p>
+    <div class="script">
+    `+'result: ${JSON.stringify(user.address.street)};'+`
+    </div> 
+    <p> e o resultado seria:</p>
+    <div class="result">
+    result: ${JSON.stringify(user.address.street)};
+    </div>
+    <p>vamos supor que o endereço nao exista e o usuario esteja da seguinte maneira e voce tente retornar o endereço da mesma maneira</p>
+    <div class="script">
+    const user ={<br>
+    ${tab}name: 'Diego',<br>
+    ${tab}idade: 27,<br>
+    };<br><br>
+    `+'result: ${JSON.stringify(user.address.street)};'+`
+    </div>
+    <p>o resultado seria esse</p>
+    <div class="result"></div>
+    <p>como voce pode ver nao acusaria nenhum erro, porém nao mostraria nada. Ao olhar a aba de console voce receberia o seguinte alerta de erro</p>
+    <div class="error">Uncaught TypeError: Cannot read properties of undefined (reading 'street')</div> 
+    <p>voce poderia fazer uma condicional na saida</p>
+    <div class="script">
+    `+'result: ${JSON.stringify((user.address ? user.address.street : "Nao Informado"))};'+`
+    </div> 
+    <p>esse resultado parece bom no começo, porém caso houvessem outros campos e o objeto fosse muito complexo, cada vez mais nossa condicional seria mais complexa. Nesse exemplo o campo address posui um campo objeto zip com dois valores dentro</p>
+    <div class="script">
+      const user ={<br>
+      ${tab}name:'Diego',<br>
+      ${tab}idade: 27,<br>
+      ${tab}address: {<br>
+      ${tab}${tab}street: "rua teste", <br>
+      ${tab}${tab}Number: 176,<br>
+      ${tab}${tab}zip:{<br>
+      ${tab}${tab}${tab}zipcode: 11750,<br>
+      ${tab}${tab}${tab}city: 'casa da mae joana',<br>
+      ${tab}${tab}},<br>
+      ${tab}},<br>
+      };<br>
+    </div>
+    <p>Nesse caso a condicional para tratar essa exceção seria algo como:</p>
+    <div class="script">
+      condicao = user.address<br>
+      ${tab}? user.address.zip<br>
+      ${tab}${tab}? user.address.zip.zipcode<br>
+      ${tab}${tab}: 'Nao informado'<br>
+      ${tab}:'Nao informado<br><br>
+      `+'result: ${JSON.stringify(condicao)};'+`
+    </div>
+  `;
+  let condicao = jaozin.address
+      ? jaozin.address.zip
+        ? jaozin.address.zip.zipcode
+        : 'Nao Informado'
+      :'Nao Informado';
+  
+  chainOpt.innerHTML +=`
+    <div class="result">
+      ${JSON.stringify(condicao)}
+    </div>
+    <p>O chained option reduz a parte de condiçoes tornando a mesma condição em algo muito menor (note que para a verificação de caso seja nulo é usado o Nullish operato)</p>
+    <div class="script">
+      condicao = user.address?.zip?.zipcode ?? 'Nao Informado';
+    </div>
+  `;
+  condicao = jaozin.address?.zip.zipcode ?? 'Nao informado';
+
+  chainOpt.innerHTML +=`
+    <div class="result">
+      ${JSON.stringify(condicao)};
+    </div>
+    <p>desse jeito ele verifica passo a passo caso nao haja uma parte do caminho</p><br><br>
+    <h2>Chain Options em funções</h2>
+    <p>chain options podem ser usadas em funçoes também. Considere o seguinte objeto</p>
+    <div class="script">
+      const user ={<br>
+      ${tab}name:'Diego',<br>
+      ${tab}idade: 27,<br>
+      ${tab}address: {<br>
+      ${tab}${tab}street: "rua teste", <br>
+      ${tab}${tab}Number: 176,<br>
+      ${tab}${tab}zip:{<br>
+      ${tab}${tab}${tab}zipcode: 11750,<br>
+      ${tab}${tab}${tab}city: 'casa da mae joana',<br>
+      ${tab}${tab}},<br>
+      ${tab}${tab}showFullAddress(){<br>
+      ${tab}${tab}${tab}return "ok";<br>
+      ${tab}${tab}},<br>
+      ${tab}},<br>
+      };<br>
+    </div>
+    <p>é possivel fazer o mesmo tipo de condicional de chain option com funções, onde verifica-se caso a função exista e executa-a caso sim</p>
+    `
+  //verifica caso endereço exista e caso a função exista e entao chama ela
+  condicao = jaozin.address?.showFullAddress?.() ?? "nao existe";
+  
+  chainOpt.innerHTML +=`
+    <div class="script">
+      condicao user.address?.showFullAddress?.() ?? "nao existe";
+    </div>
+    <div class="result">
+      ${JSON.stringify(condicao)}
+    </div>
+  `;
+
+  chainOpt.innerHTML +=`
+    <button onclick="location.href='#header'">Voltar</button>
+  `;
+
 
 }
 
