@@ -2,6 +2,7 @@ const destruct = document.querySelector(".destructuring"),
 restOp = document.querySelector(".rest-operators"),
 chainOpt = document.querySelector(".chain-opt"),
 mapFunction = document.querySelector(".map"),
+filterFunc = document.querySelector(".filter"),
 shorSyn = document.querySelector(".short-syntax");
 
 
@@ -571,12 +572,43 @@ Obj.innerHTML +=`
   `;
 }
 
+{
+  const array = [1, 2, 3, 4, 5];
+  let novoArray = array.filter(item => item % 2 !== 0);
 
+  filterFunc.innerHTML +=`
+    <p>o modo como a função filter funciona é igual ao da função map, mas diferente da função map, filter retorna uma parte do array de acordo com um condiocional</p>
+    <div class="script">
+      const array = [1, 2, 3, 4, 5];<br>
+      const novoArray = array.filter(item => item % 2 !== 0);<br><br>
 
+      //imprimindo novoArray<br>
+      `+'result: ${JSON.stringify(novoArray)}'+`
+    </div>
+    <div class="result">
+      result: ${JSON.stringify(novoArray)}
+    </div>
+    <p>outro ponto importante é que diferente do map(), o filter pega uma porção do array original, ou seja, tem um tamanho variavel, diferente do map() que mantinha o mesmo tamanho do array original</p>
+    <div class="script">
+    `+'result: novoArray.length'+`
+    </div>
+    <div class="result">
+      ${novoArray.length}
+    </div><br>
+    <h2>map() + filter()
+    <p>você também pode juntar as duas funções na hora de operar em um array<p>
+  `;
+  
+  novoArray = array.filter(item => item % 2 !== 0).map(item => item * 10)
 
-
-
-
-
-
-
+  filterFunc.innerHTML += `
+    <div class="script">
+    novoArray = array.filter(item => item % 2 !== 0).map(item => item * 10);<br><br>
+    //exibindo<br>
+    `+'result: ${JSON.stringify(novoArray)}'+`
+    </div>
+    <div class="result">
+      ${JSON.stringify(novoArray)}
+    </div>
+  `;
+}
