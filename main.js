@@ -1,9 +1,11 @@
 const destruct = document.querySelector(".destructuring"),
 restOp = document.querySelector(".rest-operators"),
+shorSyn = document.querySelector(".short-syntax"),
 chainOpt = document.querySelector(".chain-opt"),
-mapFunction = document.querySelector(".map"),
 filterFunc = document.querySelector(".filter"),
-shorSyn = document.querySelector(".short-syntax");
+everyFunc = document.querySelector(".every"),
+mapFunction = document.querySelector(".map"),            
+someFunc = document.querySelector(".some");
 
 
 const tab= "__";
@@ -611,4 +613,80 @@ Obj.innerHTML +=`
       ${JSON.stringify(novoArray)}
     </div>
   `;
+
+  filterFunc.innerHTML +=`
+    <button onclick="location.href='#header'">Voltar</button>
+  `;
 }
+
+{
+  let array = [1, 2, 3, 4, 5];
+  let res = array.every(item => typeof item === 'number');
+
+  everyFunc.innerHTML +=`
+    <p>exemplo:</p>
+    <div class="script">
+      let array = [1, 2, 3, 4, 5];<br>
+      let res = array.every(item => typeof item === 'number');<br><br>
+      //exibição<br>
+      result: res
+    </div>
+    <div class="result">
+      ${res}
+    </div>
+  `;
+  
+  array.push('farofa');
+  res = array.every(item => typeof item === 'number');
+  everyFunc.innerHTML +=`
+  <p>vamos adicionar mais um valor e chamar novamente a função:</p>
+  <div class="script">
+  array.push('farofa');<br>
+  res = array.every(item => typeof item === 'number');<br><br>
+  //exibição<br>
+  result: res
+  </div>
+  <div class="result">
+    ${res}
+  </div>
+`;
+  
+everyFunc.innerHTML +=`
+    <button onclick="location.href='#header'">Voltar</button>
+  `;
+}
+
+{
+  let array = ['jaozin', 'diego', 'vitinho'];
+  let res = array.some(item => typeof item === 'number');
+  someFunc.innerHTML +=`
+    <p>para experimentar essa função vamos usar o mesmo processo da função anterior</p>
+    <div class="script">
+      let array = ['jaozin', 'diego', 'vitinho'];<br>
+      let res = array.some(item => typeof item === 'number');<br><br>
+      //exibição<br>
+      result: res
+    </div>
+    <div class="result">
+    ${res}
+    </div>
+  `;
+  array.push(1);
+  res = array.some(item => typeof item === 'number');
+  someFunc.innerHTML += `
+    <div class="script">
+      array.push(1);<br>
+      res = array.some(item => typeof item === 'number');<br><br>
+      //exibição<br>
+      result: res
+    </div>
+    <div class="result">
+    ${res}
+    </div>
+  `;
+
+  someFunc.innerHTML +=`
+    <button onclick="location.href='#header'">Voltar</button>
+  `;
+}
+
