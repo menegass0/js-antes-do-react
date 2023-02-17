@@ -1,6 +1,7 @@
 const destruct = document.querySelector(".destructuring"),
 restOp = document.querySelector(".rest-operators"),
 chainOpt = document.querySelector(".chain-opt"),
+mapFunction = document.querySelector(".map"),
 shorSyn = document.querySelector(".short-syntax");
 
 
@@ -456,8 +457,118 @@ Obj.innerHTML +=`
   chainOpt.innerHTML +=`
     <button onclick="location.href='#header'">Voltar</button>
   `;
+}
 
+//map
 
+{
+  const array =[1, 2, 3, 4, 5];
+
+  mapFunction.innerHTML +=`
+    <p>quando queremos percorrer um array, podemos fazer isso de varias formas. Considere o array abaixo:</p>
+    <div class="script">
+      const array =[1, 2, 3, 4, 5];
+    </div>
+    <p>as duas maneiras principais envolvem laços de repetições</p>
+    <div class="script">
+      for (const i of array){<br>
+      ${tab}result += i;<br>
+      }<br>
+      console.log(`+'result'+`)<br><br>
+
+      array.forEach(item =>{<br>
+      ${tab}result +=item;<br> 
+      })<br>
+      console.log(`+'result'+`)<br>
+    </div>
+    <p>ambos os dois consoles logs iriam resultar em:</p>
+  `;
+  let result = "";
+  for (const i of array){
+    result += i;
+  }
+  let novoArray = array.forEach(item => {
+    return item * 2;
+  })
+  mapFunction.innerHTML += `
+    <div class="result">
+      ${result}
+    </div> 
+    <p>Suponha que eu queira retornar um novo array em funçao dos elementos do primeiro array</p>
+    <div class="script">
+      const novoArray = array.forEach(item =>{<br>
+      ${tab}return item * 2;<br> 
+      })<br><br>
+      //imprimindo o valor<br>
+      `+'${JSON.stringify(novoArray)}'+`
+    </div>
+    <p>Caso eu tente retornar o valor do novo Array vou receber isso:
+    <div class="result">
+      ${JSON.stringify(novoArray)}
+    </div>
+    <p>Isso porque o forEach nao trabalha muito bem com a função de retorno e pra que isso funcione seria dessa maneira</p>
+    <div class="script">
+      //instanciando a variavel novoArray antes do forEach<br>
+      const novoArray = [];<br><br>
+      array.forEach(item =>{<br>
+      ${tab}novoArray.push(item * 2);<br> 
+      })<br><br>
+      //imprimindo o resultado<br>
+      `+'${JSON.stringify(novoArray)}'+`
+    </div>
+  `;
+  novoArray =[2, 4, 6, 8, 10];
+
+  mapFunction.innerHTML +=`
+    <p>Só assim voce conseguiria retornar:</p>
+    <div class="result">
+    ${JSON.stringify(novoArray)}
+    </div>
+    <p>a função map() diferente disso consegue fazer o retorno de dentro da sua execução</p>
+    <div class="script">
+      const novoArray = array.map(item => {<br>
+        return item * 3;<br>
+      })<br><br>
+      //imprimindo o resultado<br>
+      `+'result: ${JSON.stringify(novoArray)}'+`
+    </div>
+  `;
+  
+  novoArray = array.map(item =>{
+    return item * 3;
+  })
+
+  mapFunction.innerHTML += `
+    <div class="result">
+      result: ${novoArray}
+    </div>
+    <p>é possivel usar condicionais dentro do map também</p>
+    <div class="script">
+      const novoArray = array.map(item =>{<br>
+      ${tab}if(item % 2 == 0){<br>
+      ${tab}${tab}return item * 10;<br>
+      ${tab}}<br><br>
+      ${tab}return item;<br>
+      })
+    </div>
+  `;
+  
+  novoArray = array.map(item =>{
+    if(item % 2 ==0){
+      return item * 10;
+    }
+
+    return item;
+  })
+  mapFunction.innerHTML += `
+    <div class="result">
+      result: ${novoArray}
+    </div>
+  `;
+
+  mapFunction.innerHTML +=`
+    <button onclick="location.href='#header'">Voltar</button>
+  `;
 }
 
 
