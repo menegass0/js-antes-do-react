@@ -4,7 +4,8 @@ shorSyn = document.querySelector(".short-syntax"),
 chainOpt = document.querySelector(".chain-opt"),
 filterFunc = document.querySelector(".filter"),
 everyFunc = document.querySelector(".every"),
-mapFunction = document.querySelector(".map"),            
+mapFunction = document.querySelector(".map"),  
+findFunc = document.querySelector(".find"),          
 someFunc = document.querySelector(".some");
 
 
@@ -688,5 +689,37 @@ everyFunc.innerHTML +=`
   someFunc.innerHTML +=`
     <button onclick="location.href='#header'">Voltar</button>
   `;
+}
+
+{
+  const array = [1, 4, 2, 6, 5];
+  let res = array.find(item => item % 2 === 0);
+  findFunc.innerHTML +=`
+    <div class="script">
+      const array = [1, 4, 2, 6, 5];<br>
+      let res = array.find(item => item % 2 === 0);<br><br>
+      //exibição<br> 
+      result: res
+    </div>
+    <p>a funçao find retorna o primeiro valor do elemento que coincidir com a condicional</p>
+    <div class="result">
+      ${res}
+    </div>
+    <p>Já a função findIndex retorna o indice desse elemento ao inves do seu conteudo</p>  
+  `;
+  res = array.findIndex(item => item % 2 === 0);
+  
+  findFunc.innerHTML += `
+    <div class="script">
+      res = array.findIndex(item => item % 2 === 0);<br><br>
+      //exibição<br> 
+      result: res
+    </div>
+    <p>Nesse caso o retorno é 1 pois o elmento {4} está no indice 1, ou na segunda posição, pois o array começa em 0    []
+    <div class="result">
+      ${res}
+    </div>
+  `;
+
 }
 
